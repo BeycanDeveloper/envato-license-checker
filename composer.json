@@ -1,0 +1,27 @@
+{
+    "name": "beycan/envato-license-checker",
+    "version": "1.0.0",
+    "description": "A class where you can check the purchase code provided by envato so you can add a licensing system to your Envato products.",
+    "type": "library",
+    "license": "LGPL-3.0",
+    "authors": [
+        {
+            "name": "Halil Beycan",
+            "email": "halilbeycan0@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/BeycanDeveloper/envato-license-checker/issues"
+    },
+    "homepage": "https://github.com/BeycanDeveloper/envato-license-checker",
+    "require": {
+        "php": ">=7.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Beycan\\" : "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
