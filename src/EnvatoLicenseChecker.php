@@ -31,11 +31,10 @@ class EnvatoLicenseChecker
      */
     public static function prepareHeader()
     {
-        $bearer   = 'bearer ' . self::$bearer;
-        $header   = [];
-        $header[] = 'Content-length: 0';
-        $header[] = 'Content-type: application/json; charset=utf-8';
-        $header[] = 'Authorization: ' . $bearer;
+        $header   = [
+            'Content-type: application/json; charset=utf-8',
+            'Authorization: Bearer ' . self::$bearer,
+        ];
 
         return $header;
     }
@@ -50,6 +49,7 @@ class EnvatoLicenseChecker
     {
         $curlURL = curl_init(self::$verifyURL . '?code=' . $code);
         
+        var_dump(self::prepareHeader());
         curl_setopt($curlURL, CURLOPT_HTTPHEADER, self::prepareHeader());
         curl_setopt($curlURL, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curlURL, CURLOPT_RETURNTRANSFER, 1);
@@ -76,7 +76,7 @@ class EnvatoLicenseChecker
     static function check(string $code)
     {
         $purchaseData = self::getPurchaseData($code); 
-        
+
         if ( 
             (false === $purchaseData) || 
             !is_object($purchaseData) ||
@@ -90,7 +90,7 @@ class EnvatoLicenseChecker
             $purchaseData->supported_until == "" ||
             $purchaseData->supported_until != null
         ) {
-            return true;  
+            return $purchaseData;  
         }
         
         return false;
