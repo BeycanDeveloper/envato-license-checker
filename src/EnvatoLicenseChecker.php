@@ -49,7 +49,6 @@ class EnvatoLicenseChecker
     {
         $curlURL = curl_init(self::$verifyURL . '?code=' . $code);
         
-        var_dump(self::prepareHeader());
         curl_setopt($curlURL, CURLOPT_HTTPHEADER, self::prepareHeader());
         curl_setopt($curlURL, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curlURL, CURLOPT_RETURNTRANSFER, 1);
